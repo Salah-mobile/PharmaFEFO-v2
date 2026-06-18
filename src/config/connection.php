@@ -1,5 +1,8 @@
 <?php
-class Database
+namespace config;
+use \PDO;
+use \PDOException;
+class connection
 {
     private static ?PDO $instance = null;
     public static function getConnection(): PDO
