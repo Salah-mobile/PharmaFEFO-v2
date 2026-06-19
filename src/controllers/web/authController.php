@@ -11,15 +11,17 @@ class authController{
                $email=$_POST["email"];
                $password=$_POST["password"];
                if(empty($email) || empty($password)){
-                header("Location:../../../public/index.php?action=login");
+                header("Location:/PharmaFEFO-v2/public/index.php?action=login");
                 exit();
                }else{
                 $login=$this->repoAuth->connectAcc($email,$password);
                 if($login){
-                     header("Location:../../../public/index.php?action=daschbord");
+                    session_start();
+                    $_SESSION["user"]=$login;
+                     header("Location:/PharmaFEFO-v2/public/index.php?action=daschbord");
                      exit();
                 }else{
-                    header("Location:../../../public/index.php?action=login");
+                    header("Location:/PharmaFEFO-v2/public/index.php?action=login");
                      exit();
                 }
 

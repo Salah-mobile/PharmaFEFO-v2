@@ -4,7 +4,7 @@ use config\connection;
 class stockRep{
     private $connection;
     public function __construct(){
-        $this->$connection=connection::getConnection();
+        $this->connection=connection::getConnection();
     }
     public function getAllProduct(){
         try {
