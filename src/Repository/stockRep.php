@@ -38,6 +38,16 @@ class stockRep{
             return $e->getMessage();
           }
     }
-   
-    
+    public function getPerimiProduct(){
+        try {
+            $sql ="SELECT * FROM lot_stocks l 
+            JOIN produits p on l.produit_id=p.id 
+            WHERE l.date_peremption<now()";
+            $stm=$this->connection->prepare($sql);
+            $stm->execute();
+            return $res=$stm->fetchAll();
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }    
 }

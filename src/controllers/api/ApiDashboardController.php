@@ -12,9 +12,13 @@ class ApiDashboardController{
             header("Location:/PharmaFEFO-v2/public/index.php?action=login");
             exit();
         }else{
-            $userInfo=$_SESSION["user"];
-            var_dump($userInfo);
-            require __DIR__."/../../../templates/dachbord.php";
+            $products=$this->repoStock->getAllProduct();
+            $permis=$this->repoStock->getPerimiProduct();
+            $data = [
+                "products" => $products,
+                "expired" => $permis
+            ];
+            echo json_encode($data);
         }
 
     }
